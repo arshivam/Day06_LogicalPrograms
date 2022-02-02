@@ -3,20 +3,31 @@ import java.util.*;
 
 public class CouponNumbers {
 	public static void main(String[] args) {
-		System.out.println("Enter the number of coupons you want to genrate :");
 		Scanner sc = new Scanner(System.in);
-		int n = sc.nextInt();
-		int coupon = 0;
-		int distinctCoupons = coupon;
-		System.out.println("number of distinct coupons genrated are ::");
-		for (int i=0; i<n; i++) {
-			coupon = (int) (Math.random()*100000+1);
-			if (distinctCoupons!=coupon) {
-				System.out.println(coupon);
+		System.out.print("Enter how many coupon codes you need: ");
+		int N=sc.nextInt();
+
+		int[] arr = new int[N];
+		int max = 100000, min = 999999;
+		int index = 0,flag = 0;
+		for(int i=0;index<N;i++)
+		{
+			int rand = (int) (Math.random() * (max - min + 1)) + min;
+			for(int j=0;j<index;j++)
+			{
+				if(arr[j]==rand)
+				{
+					flag=1;
+				}
 			}
-			if (distinctCoupons==coupon) {
-				i--;
+			if(flag==0)
+			{
+				arr[index]=rand;
+				index++;
 			}
+			flag=0;
 		}
+		System.out.println(Arrays.toString(arr));
+
 	}
 }
